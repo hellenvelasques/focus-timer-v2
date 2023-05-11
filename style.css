@@ -1,0 +1,120 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-color: #ffffff;
+
+  --base-color: 28;
+  --primary-color: hsl(var(--base-color), 100%, 63%);
+  --bg-color-opacityLigth: hsla(var(--base-color), 100%, 63%, 0.13);
+
+  --text-color: #323238;
+
+  font-size: 62.5%;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: 'Roboto', sans-serif;
+  display: grid;
+  min-height: 100vh;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-self: center;
+  gap: 19.2rem;
+}
+
+
+.cardButtonWrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3.2rem;
+}
+
+.cardButtonWrapper .cardButton {
+  background: #E1E1E6;
+  min-width: 13.8rem;
+  min-height: 15.2rem;
+
+  border-radius: 2.4rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+}
+
+.cardButtonWrapper input {
+  position: absolute;
+  appearance: none;
+  min-width: 13.8rem;
+  min-height: 15.2rem;
+  cursor: pointer;
+}
+
+.cardButtonWrapper input:checked{
+  background: var(--primary-color);
+  min-width: 13.8rem;
+  min-height: 15.2rem;
+  
+  border-radius: 2.4rem;
+  
+  cursor: pointer;
+}
+
+.cardButtonWrapper input:checked + label{
+  position: absolute;
+  cursor: pointer;
+}
+
+.cardButtonWrapper input:checked + label svg path{
+  fill: #FFFFFF;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+
+  cursor: pointer;
+}
+
+.hide {
+  display: none;
+}
+
+.play svg path, .pause svg path, .soundOn svg path, .stop svg path,
+.addMinutes svg path, .removeMinutes svg path, .set svg path {
+  fill: var(--text-color);
+}
+
+button svg {
+  width: clamp(3.2rem, 2rem + 8vw, 4.8rem);
+}
+
+#timer {
+  font-size: clamp(8.8rem, 8.8rem + 10vw, 12.7rem); 
+  display: flex;
+  margin-bottom: 1.6rem;
+}
+
+#controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
+}
+
+footer {
+  justify-self: flex-end;
+  align-self: flex-end;
+  padding: 0 4rem 3.2rem;
+}
