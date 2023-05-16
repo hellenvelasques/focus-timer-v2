@@ -67,7 +67,7 @@ export default function Timer({ displayMinutes, displaySeconds, resetControls })
     updateMinutes,
     hold,
     addMinutes,
-    removeMinutes
+    removeMinutes,
   }
 
 }

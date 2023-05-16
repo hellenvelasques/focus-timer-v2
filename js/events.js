@@ -2,11 +2,14 @@
 import { buttonPlay,
   buttonPause,
   buttonStop,
-  buttonSet,
-  buttonSoundOn,
-  buttonSoundOff, 
+  buttonSet, 
   buttonAddMinutes,
-  buttonRemoveMinutes} from './elements.js';
+  buttonRemoveMinutes,
+  cardButtonForest,
+  cardButtonRain,
+  cardButtonCoffeeShop,
+  cardButtonFireplace
+  } from './elements.js';
 
 export default function ({controls, timer, sound}) {
   buttonPlay.addEventListener('click', () => {
@@ -38,94 +41,86 @@ export default function ({controls, timer, sound}) {
     timer.updateMinutes(newMinutes);
   });
   
-  buttonSoundOn.addEventListener('click', () => {
-    buttonSoundOn.classList.add('hide');
-    buttonSoundOff.classList.remove('hide');
-    sound.bgAudio.pause();
-  });
-  
-  buttonSoundOff.addEventListener('click', () => {
-    buttonSoundOff.classList.add('hide');
-    buttonSoundOn.classList.remove('hide');
-    sound.bgAudio.play();
-  });
-
   buttonAddMinutes.addEventListener('click', () => {
     timer.addMinutes();
     sound.pressButton();
+    timer.updateDisplay(newMinutes, 0)
+    timer.updateMinutes(newMinutes)
   });
 
   buttonRemoveMinutes.addEventListener('click', () => {
     timer.removeMinutes();
     sound.pressButton();
+    timer.updateDisplay(newMinutes, 0)
+    timer.updateMinutes(newMinutes)
   });
 
   cardButtonForest.addEventListener('click', () => {
-    cardButtonRain.checked = false
-    cardButtonCoffeeShop.checked = false
-    cardButtonFireplace.checked = false
+    cardButtonRain.checked = false;
+    cardButtonCoffeeShop.checked = false;
+    cardButtonFireplace.checked = false;
 
-    sounds.songRain.pause()
-    sounds.songCoffeeShop.pause()
-    sounds.songFirePlace.pause()
+    sound.songRain.pause();
+    sound.songCoffeeShop.pause();
+    sound.songFirePlace.pause();
 
-    if(cardButtonForest.checked == true){
-      sounds.songForest.play()
-      sounds.songForest.loop = true
+    if(cardButtonForest.checked === true){
+      sound.songForest.play();
+      sound.songForest.loop = true;
     } else {
-      sounds.songForest.pause()
-    }
-  })
+      sound.songForest.pause();
+    };
+  });
 
   cardButtonRain.addEventListener('click', () => {
-    cardButtonForest.checked = false
-    cardButtonCoffeeShop.checked = false
-    cardButtonFireplace.checked = false
+    cardButtonForest.checked = false;
+    cardButtonCoffeeShop.checked = false;
+    cardButtonFireplace.checked = false;
 
-    sounds.songForest.pause()
-    sounds.songCoffeeShop.pause()
-    sounds.songFirePlace.pause()
+    sound.songForest.pause();
+    sound.songCoffeeShop.pause();
+    sound.songFirePlace.pause();
 
-    if(cardButtonRain.checked == true) {
-      sounds.songRain.play()
-      sounds.songRain.loop = true
+    if(cardButtonRain.checked === true) {
+      sound.songRain.play();
+      sound.songRain.loop = true;
     } else {
-      sounds.songRain.pause()
-    }
-  })
+      sound.songRain.pause();
+    };
+  });
   
   cardButtonCoffeeShop.addEventListener('click', () => {
-    cardButtonForest.checked = false
-    cardButtonRain.checked = false
-    cardButtonFireplace.checked = false
+    cardButtonForest.checked = false;
+    cardButtonRain.checked = false;
+    cardButtonFireplace.checked = false;
 
-    sounds.songForest.pause()
-    sounds.songRain.pause()
-    sounds.songFirePlace.pause()
+    sound.songForest.pause();
+    sound.songRain.pause();
+    sound.songFirePlace.pause();
 
-    if(cardButtonCoffeeShop.checked == true) {
-      sounds.songCoffeeShop.play()
-      sounds.songCoffeeShop.loop = true
+    if(cardButtonCoffeeShop.checked === true) {
+      sound.songCoffeeShop.play();
+      sound.songCoffeeShop.loop = true;
     } else {
-      sounds.songCoffeeShop.pause()
-    }
+      sound.songCoffeeShop.pause();
+    };
 
-  })
+  });
 
   cardButtonFireplace.addEventListener('click', () => {
-    cardButtonForest.checked = false
-    cardButtonRain.checked = false
-    cardButtonCoffeeShop.checked = false
+    cardButtonForest.checked = false;
+    cardButtonRain.checked = false;
+    cardButtonCoffeeShop.checked = false;
 
-    sounds.songForest.pause()
-    sounds.songRain.pause()
-    sounds.songCoffeeShop.pause()
+    sound.songForest.pause();
+    sound.songRain.pause();
+    sound.songCoffeeShop.pause();
 
-    if(cardButtonFireplace.checked == true) {
-      sounds.songFirePlace.play()
-      sounds.songFirePlace.loop = true
+    if(cardButtonFireplace.checked === true) {
+      sound.songFirePlace.play();
+      sound.songFirePlace.loop = true;
     } else {
-      sounds.songFirePlace.pause()
-    }
-  })
+      sound.songFirePlace.pause();
+    };
+  });
 };
