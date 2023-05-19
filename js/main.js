@@ -32,6 +32,6 @@ const timer = Timer({
   buttonRemoveMinutes
  });
 
-const sound = Sound();
+ const sound = Sound()
 
-Events({ controls, timer, Sound });
+Events({ controls, timer, sound });
