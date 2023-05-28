@@ -5,64 +5,164 @@
 }
 
 :root {
-  --bg-color: #ffffff;
+  font-size: 62.5%;
+
+  --bg-color: #121214;
+  --bg-primary-card: #29292E;
+  --bg-primary-card-hover: hsla(var(--base-color), 100%, 63%, 0.70);
+  --bg-second-card: hsl(var(--base-color), 100%, 63%);
+  
+  --base-color: 28;
+  --bg-primary-light: hsla(var(--base-color), 100%, 63%, 0.13);
+  --primary-color: hsl(var(--base-color), 100%, 63%);
+  
+  --text-color: #FFFFFF;
+  --icon-color-card: #C4C4CC;
+  --icon-color-card-selected: #FFFFFF;
+    
+  --slider-color: #FFFFFF;
+  --slider-color-selected: #FFFFFF;
+  --slider-thumb: #1f5290;
+}
+
+.light {
+  --bg-color: #FFFFFF;
+  --bg-primary-card: #e6e1e4;
+  --bg-primary-card-hover: hsla(var(--base-color), 100%, 63%, 0.70);
+  --bg-second-card: hsl(var(--base-color), 100%, 63%);
 
   --base-color: 28;
+  --bg-primary-light: hsla(var(--base-color), 100%, 63%, 0.13);
   --primary-color: hsl(var(--base-color), 100%, 63%);
-  --bg-color-opacityLigth: hsla(var(--base-color), 100%, 63%, 0.13);
 
-  --text-color: #323238;
+  --text-color: #383633;
+  --icon-color-card: #383633;
+  --icon-color-card-selected: #FFFFFF;
 
-  font-size: 62.5%;
+  --slider-color: #323238;
+  --slider-color-selected: #FFFFFF;
+  --slider-thumb: #1f5290;
 }
 
 body {
-  background-color: var(--bg-color);
-  color: var(--text-color);
   font-family: 'Roboto', sans-serif;
-  display: grid;
+  font-weight: 500;
+  
+  background: var(--bg-color);
+  color: var(--text-color);
+
   min-height: 100vh;
+}
+
+.content {
+  display: grid;
+  place-items: center;
+}
+
+button {
+  background: transparent;
+  border: none;
+
+  cursor: pointer;
+
+  transition: all .4s ease;
+}
+
+.hide {
+  display: none;
+}
+
+.select #forest svg path,
+.select #rain svg path,
+.select #coffee svg path,
+.select #fireplace svg path {
+  fill: var(--icon-color-card-selected);
+}
+
+.display #controls button:hover svg path {
+  fill: var(--primary-color);
+}
+
+button svg {
+  width: clamp(3.2rem, 2rem + 12vw, 6.4rem);
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 100px 100px 0px 0px ;
+  margin-bottom: 92px;
+}
+
+header button:hover {
+  transition: all 0.4s ease;
+  cursor: pointer;
+}
+
+header button:hover {
+  transform: scale(1.1);
 }
 
 main {
   display: flex;
-  justify-content: center;
+  
   align-items: center;
-  justify-self: center;
-  gap: 19.2rem;
+  justify-content: space-around;
+
+  width: 100%;
+
+  padding: 0 10rem;
 }
 
-.displayControls {
+.display {
   width: clamp(10rem, 10rem + 30vw, 32.1rem);
 }
 
-.cardButtonWrapper {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3.2rem;
-}
-
-.cardButtonWrapper .cardButton {
-  background: #E1E1E6;
-  min-width: 13.8rem;
-  min-height: 15.2rem;
-
-  border-radius: 2.4rem;
+#timer {
+  font-size: 12.6rem;
 
   display: flex;
-  justify-content: center;
+  
+  margin-bottom: 1.7rem;
+}
+
+#controls {
+  display: flex;
   align-items: center;
-  position: relative;
+  justify-content: space-between;
+
+  height: clamp(8rem, 5rem + 10vw, 10.8rem)
+}
+
+#controls svg path{
+  fill: var(--text-color);
+}
+
+#controls button {
+  transition: all .4s ease;
   cursor: pointer;
 }
 
-.cardButton {
+
+#controls button:hover {
+  transform: scale(1.1);
+}
+
+.sounds {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 3.2rem;
+}
+
+.card {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 3.2rem;
 
-  padding: 4.8rem 4.7rem;
+  padding: 4rem;
   background: var(--bg-primary-card);
   
   border-radius: 2.4rem;
@@ -70,75 +170,54 @@ main {
   transition: all .4s ease;
 }
 
-.cardButtonWrapper input {
-  position: absolute;
-  appearance: none;
-  min-width: 13.8rem;
-  min-height: 15.2rem;
-  cursor: pointer;
+.card svg path {
+  fill: var(--icon-color-card); 
 }
 
-.cardButtonWrapper input:checked{
-  background: var(--primary-color);
-  min-width: 13.8rem;
-  min-height: 15.2rem;
-  
-  border-radius: 2.4rem;
+.card:hover svg path {
+  fill: var(--icon-color-card-selected); 
+}
+
+.card:hover {
+  background: var(--bg-primary-card-hover);
   
   cursor: pointer;
+  
 }
 
-.cardButtonWrapper input:checked + label{
-  position: absolute;
+.card.select {
+  background: var(--bg-second-card);
+}
+
+.volumeSlider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 10px;
+  border-radius: 5px;  
+  background-color: var(--slider-color);
+  outline: none;
   cursor: pointer;
 }
 
-.cardButtonWrapper input:checked + label svg path{
-  fill: #FFFFFF;
+.volumeSlider::-webkit-slider-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  -webkit-appearance: none;
+  background-color: var(--slider-thumb);
 }
 
-button {
-  background-color: transparent;
-  border: none;
-
-  cursor: pointer;
+.volumeSlider::-moz-range-thumb {
+  background-color: var(--slider-thumb);
 }
 
-.hide {
-  display: none;
+.volumeSlider::-ms-thumb {
+  background-color: var(--slider-thumb);
 }
 
-.play svg path, .pause svg path, .soundOn svg path, .stop svg path,
-.addMinutes svg path, .removeMinutes svg path, .set svg path {
-  fill: var(--text-color);
+.card.select .volumeSlider{
+  background-color: var(--slider-color-selected);
 }
-
-button svg {
-  width: clamp(3.2rem, 2rem + 8vw, 4.8rem);
-}
-
-#timer {
-  /* font-size: clamp(8.8rem, 8.8rem + 10vw, 12.7rem);  */
-  display: flex;
-  margin-bottom: 1.6rem;
-
-  font-size: 12.7rem;
-}
-
-#controls {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 4rem;
-}
-
-footer {
-  justify-self: flex-end;
-  align-self: flex-end;
-  padding: 0 4rem 3.2rem;
-}
-
-/*Medias Queries*/
 
 @media screen and (max-width: 1100px) {
   main {
@@ -146,22 +225,24 @@ footer {
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 990px) {
   main {
     flex-direction: column;
     gap: 5rem;
   
-    padding: 3rem;
+    padding: 0rem;
   } 
 
-  .displayControls {
+  .display {
+    width: 70%;
     text-align: center;
     display: flex;
     flex-direction: column;
   }
 
   #timer {
-    font-size: clamp(8.8rem, 8.8rem + 10vw, 12.7rem);
+    margin: 0 auto;
+    font-size: clamp(10rem, 2.5vw, 12.6rem);
   }
 
   #controls {
@@ -170,29 +251,37 @@ footer {
   }
 }
 
-@media screen and (max-width: 560px) {
-  #timer {
-    font-size: clamp(8.8rem, 8.8rem + 10vw, 10.7rem);
-    justify-content: center;
+@media screen and (max-width: 700px) {
+  header {
+    padding: 3.2rem;
   }
+}
 
+
+@media screen and (max-width: 560px) {
   #controls {
-    gap: 3rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 1rem;
     width: 15rem;
+
+    margin-top: 2rem;
+    margin-bottom: 2rem;
   }
   
-  .cardButton {
+  .card {
     padding: 3.2rem 3.1rem;
   }
 }
 
 @media screen and (max-width: 460px) {
-  .cardButtonWrapper {
+  .sounds {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr;
   }
   
-  .cardButton {
+  .card {
     padding: 5.2rem 7rem;
   }
 
@@ -204,7 +293,7 @@ footer {
     font-size: 8rem;
   }
  
-  .cardButton {
+  .card {
     padding: 2.8rem 2.7rem;
   }
 }
@@ -214,7 +303,7 @@ footer {
     margin: 0 auto;
     font-size: 6rem;
   }
-  .cardButton {
+  .card {
     padding: 1.8rem 1.7rem;
   }
 

@@ -1,36 +1,45 @@
-export default function Controls ({ buttonPlay, buttonPause, buttonSet, buttonStop }) {
+export default function Controls({
+  buttonPlay,
+  buttonPause,
+  minutesDisplay,
+}) {
 
   function play() {
-    buttonPlay.classList.add('hide');
-    buttonPause.classList.remove('hide');
-    buttonSet.classList.add('hide');
-    buttonStop.classList.remove('hide');
-  };
+    buttonPlay.classList.add('hide')
+    buttonPause.classList.remove('hide')
+  }
 
   function pause() {
-    buttonPause.classList.add('hide');
-    buttonPlay.classList.remove('hide');
-  };
-
-  function getMinutes() {
-    let newMinutes = prompt('Quantos minutos?');
-    if (!newMinutes) {
-      return false;
-    };
-    return newMinutes;
-  };
+    buttonPlay.classList.remove('hide')
+    buttonPause.classList.add('hide')
+  }
 
   function reset() {
-    buttonPlay.classList.remove('hide');
-    buttonPause.classList.add('hide');
-    buttonSet.classList.remove('hide');
-    buttonStop.classList.add('hide');
-  };
+    buttonPlay.classList.remove('hide')
+    buttonPause.classList.add('hide')
+  }
+
+  function sumMinutes() {
+    let newMinutes = Number(minutesDisplay.textContent) + 5
+
+    return newMinutes
+  }
+
+  function subtractMinutes() {
+    let newMinutes = Number(minutesDisplay.textContent) - 5
+
+    if (newMinutes < 0) {
+      newMinutes = 0
+    }
+
+    return newMinutes
+  }
 
   return {
     reset,
     play,
     pause,
-    getMinutes
-  };
+    sumMinutes,
+    subtractMinutes,
+  } 
 }

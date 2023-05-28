@@ -1,31 +1,40 @@
-const buttonPlay = document.querySelector('.play');
-const buttonPause = document.querySelector('.pause');
-const buttonStop = document.querySelector('.stop');
-const buttonSet = document.querySelector('.set');
-const buttonSoundOn = document.querySelector('.soundOn');
-const buttonSoundOff = document.querySelector('.soundOff');
-const displayMinutes = document.querySelector('.minutes');
-const displaySeconds = document.querySelector('.seconds');
-const buttonAddMinutes = document.querySelector('.addMinutes');
-const buttonRemoveMinutes = document.querySelector('.removeMinutes');
-const cardButtonForest = document.querySelector('#forest');
-const cardButtonRain = document.querySelector('#rain');
-const cardButtonCoffeeShop = document.querySelector('#coffeeshop');
-const cardButtonFireplace = document.querySelector('#fireplace');
+const buttonPlay = document.querySelector('.play')
+const buttonPause = document.querySelector('.pause')
+const buttonStop = document.querySelector('.stop')
+const buttonPlus = document.querySelector('.plus')
+const buttonMinus = document.querySelector('.minus')
+const buttonSoundForest = document.querySelector('.forest')
+const buttonSoundRain = document.querySelector('.rain')
+const buttonSoundCoffee = document.querySelector('.coffee')
+const buttonSoundFireplace = document.querySelector('.fireplace')
+const minutesDisplay = document.querySelector('.minutes')
+const secondsDisplay = document.querySelector('.seconds')
+const buttonLightMode = document.querySelector('.light-mode')
+const buttonDarkMode = document.querySelector('.dark-mode')
+const forestVolumeSlider = document.querySelector('#forestVolumeSlider')
+const rainVolumeSlider = document.querySelector('#rainVolumeSlider')
+const coffeeVolumeSlider = document.querySelector('#coffeeVolumeSlider')
+const fireplaceVolumeSlider = document.querySelector('#fireplaceVolumeSlider')
+const volumeSlider = document.querySelector('.volumeSlider')
+
 
 export {
-  buttonPlay,
-  buttonPause,
+  buttonPlay, 
+  buttonPause, 
   buttonStop,
-  buttonSet,
-  displayMinutes,
-  displaySeconds,
-  buttonSoundOn,
-  buttonSoundOff,
-  buttonAddMinutes,
-  buttonRemoveMinutes,
-  cardButtonForest,
-  cardButtonRain,
-  cardButtonCoffeeShop,
-  cardButtonFireplace,
+  buttonPlus,
+  buttonMinus,
+  buttonSoundForest,
+  buttonSoundRain,
+  buttonSoundCoffee,
+  buttonSoundFireplace,
+  minutesDisplay,
+  secondsDisplay,
+  buttonLightMode,
+  buttonDarkMode,
+  forestVolumeSlider,
+  rainVolumeSlider,
+  coffeeVolumeSlider,
+  fireplaceVolumeSlider,
+  volumeSlider
 }

@@ -1,126 +1,181 @@
-
-import { buttonPlay,
-  buttonPause,
+import {
+  buttonPlay, 
+  buttonPause, 
   buttonStop,
-  buttonSet, 
-  buttonAddMinutes,
-  buttonRemoveMinutes,
-  cardButtonForest,
-  cardButtonRain,
-  cardButtonCoffeeShop,
-  cardButtonFireplace
-  } from './elements.js';
+  buttonPlus,
+  buttonMinus,
+  buttonSoundForest,
+  buttonSoundRain,
+  buttonSoundCoffee,
+  buttonSoundFireplace,
+  buttonLightMode,
+  buttonDarkMode,
+  forestVolumeSlider,
+  rainVolumeSlider,
+  coffeeVolumeSlider,
+  fireplaceVolumeSlider,
+  volumeSlider,
+} from './elements.js'
 
-export default function ({controls, timer, sound}) {
+export default function Events({
+  controls,
+  timer,
+  sound
+}) {
+
+  function removeSelection() {
+    buttonSoundForest.classList.remove('select')
+    buttonSoundRain.classList.remove('select')
+    buttonSoundCoffee.classList.remove('select')
+    buttonSoundFireplace.classList.remove('select')
+    
+  }
+  
+  function addSelection(card) {
+    removeSelection()
+    
+    card.classList.add('select')
+  }
+  
+  function changeView() {
+    buttonLightMode.classList.toggle('hide')
+    buttonDarkMode.classList.toggle('hide')
+    document.querySelector('html').classList.toggle('light')
+  }
+
+  function changeVolume(audio, valueSlider) {
+    audio.volume = valueSlider.value;
+  }
+
+  function turnOnVolume(audio, valueSlider) {
+    valueSlider.value = 0.5
+    audio.volume = valueSlider.value
+  }
+
+  function turnOffVolume(audio, valueSlider) {
+    valueSlider.value = 0
+    audio.volume = valueSlider.value
+  }
+
+
   buttonPlay.addEventListener('click', () => {
-    controls.play();
-    timer.countdown();
-    sound.pressButton();
-  });
+    controls.play()  
+    timer.countDown()  
+    sound.pressButton()
+  })
   
   buttonPause.addEventListener('click', () => {
-    controls.pause();
-    timer.hold();
-    sound.pressButton();
-  });
+    controls.pause()
+    timer.hold()
+    sound.pressButton()
+  })
   
   buttonStop.addEventListener('click', () => {
-    controls.reset();
-    timer.reset();
-    sound.pressButton();
-  });
+    controls.reset()   
+    timer.reset()
+    sound.pressButton()
+  })
   
-  buttonSet.addEventListener('click', () => {
-    let newMinutes = controls.getMinutes();
-  
-    if (!newMinutes) {
-      timer.reset();
-      return;
-    };
-    timer.updateDisplay(newMinutes, 0);
-    timer.updateMinutes(newMinutes);
-  });
-  
-  buttonAddMinutes.addEventListener('click', () => {
-    timer.addMinutes();
-    sound.pressButton();
+  buttonPlus.addEventListener('click', () => {
+    let newMinutes = controls.sumMinutes()
+    
+    sound.pressButton()
     timer.updateDisplay(newMinutes, 0)
     timer.updateMinutes(newMinutes)
-  });
-
-  buttonRemoveMinutes.addEventListener('click', () => {
-    timer.removeMinutes();
-    sound.pressButton();
+  })
+  
+  buttonMinus.addEventListener('click', () => {
+    let newMinutes = controls.subtractMinutes()
+    
+    sound.pressButton()
     timer.updateDisplay(newMinutes, 0)
     timer.updateMinutes(newMinutes)
+  })
+
+
+  buttonSoundForest.addEventListener('click', () => {
+    sound.resetSounds()
+    turnOffVolume(sound.forestAudio, forestVolumeSlider)
+    if (!buttonSoundForest.classList.contains('select')) {
+      addSelection(buttonSoundForest)
+      turnOnVolume(sound.forestAudio, forestVolumeSlider)
+      sound.forestAudio.play()
+      return
+    }
+    removeSelection()
+    
+  })
+  
+  buttonSoundRain.addEventListener('click', () => {
+    sound.resetSounds()
+    turnOffVolume(sound.rainAudio, rainVolumeSlider)
+    if (!buttonSoundRain.classList.contains('select')) {
+      addSelection(buttonSoundRain)
+      turnOnVolume(sound.rainAudio, rainVolumeSlider)
+      sound.rainAudio.play()
+      return
+    }
+    removeSelection()
+  })
+  
+  buttonSoundCoffee.addEventListener('click', () => {
+    sound.resetSounds()
+    turnOffVolume(sound.coffeeAudio, coffeeVolumeSlider)
+    if (!buttonSoundCoffee.classList.contains('select')) {
+      addSelection(buttonSoundCoffee)
+      turnOnVolume(sound.coffeeAudio, coffeeVolumeSlider)
+      sound.coffeeAudio.play()
+      return
+    }
+    removeSelection()
+  })
+  
+  buttonSoundFireplace.addEventListener('click', () => {
+    sound.resetSounds()
+    turnOffVolume(sound.fireplaceAudio, fireplaceVolumeSlider)
+    if (!buttonSoundFireplace.classList.contains('select')) {
+      addSelection(buttonSoundFireplace)
+      turnOnVolume(sound.fireplaceAudio, fireplaceVolumeSlider)
+      sound.fireplaceAudio.play()
+      return
+    }
+    removeSelection()
+  })
+
+  buttonLightMode.addEventListener('click', () => {
+    changeView()
+  })
+  
+  buttonDarkMode.addEventListener('click', () => {
+    changeView()
+  })
+
+  forestVolumeSlider.addEventListener('click', function(event) {
+    event.stopPropagation();
   });
-
-  cardButtonForest.addEventListener('click', () => {
-    cardButtonRain.checked = false;
-    cardButtonCoffeeShop.checked = false;
-    cardButtonFireplace.checked = false;
-
-    sound.songRain.pause();
-    sound.songCoffeeShop.pause();
-    sound.songFirePlace.pause();
-
-    if(cardButtonForest.checked === true){
-      sound.songForest.play();
-      sound.songForest.loop = true;
-    } else {
-      sound.songForest.pause();
-    };
+  rainVolumeSlider.addEventListener('click', function(event) {
+    event.stopPropagation();
   });
-
-  cardButtonRain.addEventListener('click', () => {
-    cardButtonForest.checked = false;
-    cardButtonCoffeeShop.checked = false;
-    cardButtonFireplace.checked = false;
-
-    sound.songForest.pause();
-    sound.songCoffeeShop.pause();
-    sound.songFirePlace.pause();
-
-    if(cardButtonRain.checked === true) {
-      sound.songRain.play();
-      sound.songRain.loop = true;
-    } else {
-      sound.songRain.pause();
-    };
+  coffeeVolumeSlider.addEventListener('click', function(event) {
+    event.stopPropagation();
+  });
+  fireplaceVolumeSlider.addEventListener('click', function(event) {
+    event.stopPropagation();
   });
   
-  cardButtonCoffeeShop.addEventListener('click', () => {
-    cardButtonForest.checked = false;
-    cardButtonRain.checked = false;
-    cardButtonFireplace.checked = false;
+  forestVolumeSlider.addEventListener('change', () => {
+    changeVolume(sound.forestAudio, forestVolumeSlider)
+  })
 
-    sound.songForest.pause();
-    sound.songRain.pause();
-    sound.songFirePlace.pause();
+  rainVolumeSlider.addEventListener('change', () => {
+    changeVolume(sound.rainAudio, rainVolumeSlider)
+  })
 
-    if(cardButtonCoffeeShop.checked === true) {
-      sound.songCoffeeShop.play();
-      sound.songCoffeeShop.loop = true;
-    } else {
-      sound.songCoffeeShop.pause();
-    };
+  coffeeVolumeSlider.addEventListener('change', () => {
+    changeVolume(sound.coffeeAudio, coffeeVolumeSlider)
+  })
 
-  });
-
-  cardButtonFireplace.addEventListener('click', () => {
-    cardButtonForest.checked = false;
-    cardButtonRain.checked = false;
-    cardButtonCoffeeShop.checked = false;
-
-    sound.songForest.pause();
-    sound.songRain.pause();
-    sound.songCoffeeShop.pause();
-
-    if(cardButtonFireplace.checked === true) {
-      sound.songFirePlace.play();
-      sound.songFirePlace.loop = true;
-    } else {
-      sound.songFirePlace.pause();
-    };
-  });
-};
+  fireplaceVolumeSlider.addEventListener('change', () => {
+    changeVolume(sound.fireplaceAudio, fireplaceVolumeSlider)
+  })
+}

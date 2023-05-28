@@ -7,17 +7,17 @@ export default function() {
   // const songCoffeeShop = new Audio('https://github.com/hellenvelasques/focus-timer-v2/blob/main/sounds/Cafeteria.wav');
   // const songFirePlace = new Audio('https://github.com/hellenvelasques/focus-timer-v2/blob/main/sounds/Lareira.wav');
 
-  const buttonPressAudio = new Audio ('../sounds/audios_button-press.wav');
+  const buttonPressAudio = new Audio ('../sounds/audios_button-press.mp3');
   const kitchenTimer = new Audio ('../sounds/audios_kichen-timer.mp3');
-  const songForest = new Audio('../sounds/Floresta.wav');
-  const songRain = new Audio('../sounds/Chuva.wav');
-  const songCoffeeShop = new Audio('../sounds/Cafeteria.wav');
-  const songFirePlace = new Audio('../sounds/Lareira.wav');
+  const forestAudio = new Audio('../sounds/Floresta.mp3');
+  const rainAudio = new Audio('../sounds/Chuva.mp3');
+  const coffeeAudio = new Audio('../sounds/Cafeteria.mp3');
+  const fireplaceAudio = new Audio('../sounds/Lareira.mp3');
 
-  songForest.loop = true;
-  songRain.loop = true;
-  songCoffeeShop.loop = true;
-  songFirePlace.loop = true;
+  forestAudio.loop = true
+  rainAudio.loop = true
+  coffeeAudio.loop = true
+  fireplaceAudio.loop = true
 
   function pressButton() {
     buttonPressAudio.play()
@@ -28,18 +28,20 @@ export default function() {
   }
 
   function resetSounds() {
-    songForest.pause(),
-    songRain.pause(),
-    songCoffeeShop.pause(),
-    songFirePlace.pause()
+    forestAudio.pause()
+    rainAudio.pause()
+    coffeeAudio.pause()
+    fireplaceAudio.pause()
   }
+
 
   return {
     pressButton,
     timeEnd,
-    songForest,
-    songRain,
-    songCoffeeShop,
-    songFirePlace,
-  };
+    resetSounds,
+    forestAudio,
+    rainAudio,
+    coffeeAudio,
+    fireplaceAudio,
+  }  
 }
