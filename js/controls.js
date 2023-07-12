@@ -20,13 +20,13 @@ export default function Controls({
   }
 
   function sumMinutes() {
-    let newMinutes = Number(minutesDisplay.textContent) + 5
+    let newMinutes = Number(minutesDisplay.textContent) + 1
 
     return newMinutes
   }
 
   function subtractMinutes() {
-    let newMinutes = Number(minutesDisplay.textContent) - 5
+    let newMinutes = Number(minutesDisplay.textContent) - 1
 
     if (newMinutes < 0) {
       newMinutes = 0
