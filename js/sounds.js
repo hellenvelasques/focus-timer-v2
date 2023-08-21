@@ -1,10 +1,10 @@
 export default function() {
-  const buttonPressAudio = new Audio ('https://github.com/hellenvelasques/focus-timer-v2/blob/main/sounds/audios_button-press.mp3');
-  const kitchenTimer = new Audio ('https://github.com/hellenvelasques/focus-timer-v2/blob/main/sounds/audios_kichen-timer.mp3');
-  const forestAudio = new Audio('https://github.com/hellenvelasques/focus-timer-v2/blob/main/sounds/Floresta.mp3');
-  const rainAudio = new Audio('https://github.com/hellenvelasques/focus-timer-v2/blob/main/sounds/Chuva.mp3');
-  const coffeeAudio = new Audio('https://github.com/hellenvelasques/focus-timer-v2/blob/main/sounds/Cafeteria.mp3');
-  const fireplaceAudio = new Audio('https://github.com/hellenvelasques/focus-timer-v2/blob/main/sounds/Lareira.mp3');
+  const buttonPressAudio = new Audio ('https://raw.githubusercontent.com/hellenvelasques/focus-timer-v2/main/sounds/audios_button-press.mp3');
+  const kitchenTimer = new Audio ('https://raw.githubusercontent.com/hellenvelasques/focus-timer-v2/main/sounds/audios_kichen-timer.mp3');
+  const forestAudio = new Audio('https://raw.githubusercontent.com/hellenvelasques/focus-timer-v2/main/sounds/Floresta.mp3');
+  const rainAudio = new Audio('https://raw.githubusercontent.com/hellenvelasques/focus-timer-v2/main/sounds/Chuva.mp3');
+  const coffeeAudio = new Audio('https://raw.githubusercontent.com/hellenvelasques/focus-timer-v2/main/sounds/Cafeteria.mp3');
+  const fireplaceAudio = new Audio('https://raw.githubusercontent.com/hellenvelasques/focus-timer-v2/main/sounds/Lareira.mp3');
   
   //local
   // const buttonPressAudio = new Audio ('../sounds/audios_button-press.mp3');
